@@ -46,13 +46,13 @@ namespace Planning
         /// <param name="end"></param>
         /// <param name="comp"></param>
         /// <param name="desc"></param>
-        public async void AddDataToDataBase(string start, string end, string comp, string desc)
+        public async void AddDataToDataBase(string start, string end, string comp, string desc, string prio)
         {
             SQLiteConnection sql = new SQLiteConnection(ConnectionString());
 
             await sql.OpenAsync();
 
-            SQLiteCommand cmd = new SQLiteCommand(Queries.Insert(start, end, comp, desc), sql);
+            SQLiteCommand cmd = new SQLiteCommand(Queries.Insert(start, end, comp, desc, prio), sql);
 
             await cmd.ExecuteNonQueryAsync();
             sql.Close();
@@ -65,13 +65,13 @@ namespace Planning
         /// <param name="end"></param>
         /// <param name="comp"></param>
         /// <param name="desc"></param>
-        public void Edit(int id, string start, string end, string comp, string desc, string st)
+        public void Edit(int id, string start, string end, string comp, string desc, string st, string prio)
         {
             using (SQLiteConnection sql = new SQLiteConnection(ConnectionString()))
             {
                 sql.Open();
 
-                SQLiteCommand cmd = new SQLiteCommand(Queries.Edit(id, start, end, comp, desc, st), sql);
+                SQLiteCommand cmd = new SQLiteCommand(Queries.Edit(id, start, end, comp, desc, st, prio), sql);
 
                 cmd.ExecuteNonQuery();
                 sql.Close();

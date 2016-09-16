@@ -29,6 +29,8 @@ namespace Planning
 
             new Task(ShowData).Start();
             inconspicuous();
+
+
         }
 
         public async void ShowData()
@@ -58,8 +60,9 @@ namespace Planning
                 string comp = (dataGrid.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
                 string desc = (dataGrid.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
                 string status = (dataGrid.SelectedCells[5].Column.GetCellContent(item) as TextBlock).Text;
+                string prio = (dataGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
 
-                EditWindow ed = new EditWindow(id, start, end, comp, desc, status, this);
+                EditWindow ed = new EditWindow(id, start, end, comp, desc, status, prio, this);
                 ed.Show();
                 if (ed.IsLoaded == false)
                 {

@@ -6,10 +6,10 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Planning"
         mc:Ignorable="d"
-        Title="Planning app" Height="421.012" Width="590.807" WindowStartupLocation="CenterScreen"
+        Title="Planning app" Height="421.012" Width="668.024" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="565" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="617" RenderTransformOrigin="0.5,0.5">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -27,9 +27,9 @@ namespace Planning
         /// <param name="comp"></param>
         /// <param name="desc"></param>
         /// <returns></returns>
-        public static string Insert(string start, string end, string comp, string desc)
+        public static string Insert(string start, string end, string comp, string desc, string prio)
         {
-            return $"INSERT INTO planning (StartDate, EndDate, Component, Description, Status) VALUES('{start}','{end}','{comp}','{desc}', 'Incomplete')";
+            return $"INSERT INTO planning (StartDate, EndDate, Component, Description, Status, priority) VALUES('{start}','{end}','{comp}','{desc}', 'Incomplete', '{prio}')";
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Planning
         /// <param name="comp"></param>
         /// <param name="desc"></param>
         /// <returns></returns>
-        public static string Edit(int id, string start, string end, string comp, string desc, string status)
+        public static string Edit(int id, string start, string end, string comp, string desc, string status, string prio)
         {
-            return $"UPDATE planning SET StartDate='{start}', EndDate='{end}', Component='{comp}', Description='{desc}', status='{status}' WHERE ID='{id}'";
+            return $"UPDATE planning SET StartDate='{start}', EndDate='{end}', Component='{comp}', Description='{desc}', status='{status}', '{prio}' WHERE ID='{id}'";
         }
     }
 }

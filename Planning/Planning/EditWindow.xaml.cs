@@ -22,7 +22,7 @@ namespace Planning
     /// </summary>
     public partial class EditWindow : MetroWindow
     {
-        public EditWindow(int id, string start, string end, string comp, string desc, string check ,ShowWindow win)
+        public EditWindow(int id, string start, string end, string comp, string desc, string check, string prio, ShowWindow win)
         {
             InitializeComponent();
 
@@ -31,6 +31,12 @@ namespace Planning
             endDate.Text = end;
             txtSubject.Text = comp;
             txtDesc.Text = desc;
+            cmbPrio.SelectedValue = prio;
+
+            string[] priorityArray = new string[] {"Low", "Middle", "High" };
+
+            cmbPrio.ItemsSource = priorityArray;
+
             if (check == "Complete")
             {
                 chkStatus.IsChecked = true;
@@ -53,7 +59,7 @@ namespace Planning
 
             try
             {
-                if (startDate.Text == "" || endDate.Text == "" || txtSubject.Text == "" || txtDesc.Text == "")
+                if (startDate.Text == "" || endDate.Text == "" || txtSubject.Text == "" || txtDesc.Text == "" || cmbPrio.SelectedIndex == -1)
                 {
                     await this.ShowMessageAsync("Error", "1 or more fields were empty.");
                 }
@@ -69,14 +75,14 @@ namespace Planning
                         {
                             var x = "Complete";
 
-                            dbObject.Edit(Convert.ToInt32(txtid.Text), startDate.Text, endDate.Text, txtSubject.Text, txtDesc.Text, x);
+                            dbObject.Edit(Convert.ToInt32(txtid.Text), startDate.Text, endDate.Text, txtSubject.Text, txtDesc.Text, x, cmbPrio.SelectedValue.ToString());
                             await this.ShowMessageAsync("Success!", $"Successfully edited item id {txtid.Text}");
                             CollectionViewSource.GetDefaultView(show.dataGrid.ItemsSource).Refresh();
                         }
                         else
                         {
                             var x = "Incomplete";
-                            dbObject.Edit(Convert.ToInt32(txtid.Text), startDate.Text, endDate.Text, txtSubject.Text, txtDesc.Text, x);
+                            dbObject.Edit(Convert.ToInt32(txtid.Text), startDate.Text, endDate.Text, txtSubject.Text, txtDesc.Text, x, cmbPrio.SelectedValue.ToString());
                             await this.ShowMessageAsync("Success!", $"Successfully edited item id {txtid.Text}");
                         }
                        

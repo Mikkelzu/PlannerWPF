@@ -27,6 +27,9 @@ namespace Planning
         public MainWindow()
         {
             InitializeComponent();
+
+            string[] priorityArray = new string[] { "Low", "Medium", "High" };
+            cmbPriority.ItemsSource = priorityArray;
         }
 
         private async void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -35,7 +38,7 @@ namespace Planning
             
             try
             {
-                if (start.SelectedDate.ToString() == "" || end.SelectedDate.ToString() == "" || txtSubject.Text == "" || txtDesc.Text == "")
+                if (start.SelectedDate.ToString() == "" || end.SelectedDate.ToString() == "" || txtSubject.Text == "" || txtDesc.Text == "" ||cmbPriority.SelectedIndex == -1)
                 {
                     await this.ShowMessageAsync("Error", "1 or more fields were empty.");
                 }
@@ -48,7 +51,8 @@ namespace Planning
                     else
                     {
                         await this.ShowMessageAsync("Added", "Added new item to database.");
-                        dbObject.AddDataToDataBase(start.ToString(), end.ToString(), txtSubject.Text, txtDesc.Text);
+                        string x = cmbPriority.SelectedValue.ToString();
+                        dbObject.AddDataToDataBase(start.ToString(), end.ToString(), txtSubject.Text, txtDesc.Text, x);
                     }
                 }
             }

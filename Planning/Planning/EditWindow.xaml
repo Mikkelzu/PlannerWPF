@@ -20,6 +20,8 @@
         <TextBox x:Name="txtDesc" HorizontalAlignment="Left" Height="23" Margin="91,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtid" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="24,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="chkStatus" Content="Complete?" HorizontalAlignment="Left" Margin="91,287,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbPrio" HorizontalAlignment="Left" Margin="91,324,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label3" Content="Priority" HorizontalAlignment="Left" Margin="11,324,0,0" VerticalAlignment="Top" Width="66"/>
 
     </Grid>
 </Controls:MetroWindow>
