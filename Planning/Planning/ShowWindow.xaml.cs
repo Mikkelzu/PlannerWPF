@@ -30,7 +30,7 @@ namespace Planning
             new Task(ShowData).Start();
             inconspicuous();
 
-
+            
         }
 
         public async void ShowData()
@@ -42,6 +42,37 @@ namespace Planning
                 if (ds.Tables.Count > 0)
                     dataGrid.ItemsSource = ds.Tables[0].DefaultView;
             });
+        }
+
+        private void Row_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            object item = dataGrid.SelectedItem;
+            if (item ==  null)
+            {
+                return;
+            }
+
+            DataGridSelected();
+
+        }
+
+        public void DataGridSelected()
+        {
+            object item = dataGrid.SelectedItem;
+
+            string prio = (dataGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
+             if (prio =="High" || prio == "high")
+             {
+                image.Source = GetBitMap.getPriority(prio);
+             }
+            else if (prio == "Middle" || prio == "middle")
+            {
+                image.Source = GetBitMap.getPriority(prio);
+            }
+             else if (prio == "Low" || prio == "low")
+            {
+                image.Source = GetBitMap.getPriority(prio);
+            }
         }
 
         private async void btnEditWindow_Click(object sender, RoutedEventArgs e)
