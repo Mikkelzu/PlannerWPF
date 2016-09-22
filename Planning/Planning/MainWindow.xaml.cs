@@ -44,16 +44,16 @@ namespace Planning
                 }
                 else
                 {
-                    if (start.SelectedDate < DateTime.Today || end.SelectedDate < DateTime.Today)
-                    {
-                        await this.ShowMessageAsync("Error", "Starting or ending date can't be earlier than today.");
-                    }
-                    else
-                    {
+                    //if (start.SelectedDate < DateTime.Today || end.SelectedDate < DateTime.Today)
+                    //{
+                    //    await this.ShowMessageAsync("Error", "Starting or ending date can't be earlier than today.");
+                    //}
+                    //else
+                    //{
                         await this.ShowMessageAsync("Added", "Added new item to database.");
                         string x = cmbPriority.SelectedValue.ToString();
                         dbObject.AddDataToDataBase(start.ToString(), end.ToString(), txtSubject.Text, txtDesc.Text, x);
-                    }
+                    //}
                 }
             }
             catch (DatabaseExceptions ex)

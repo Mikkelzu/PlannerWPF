@@ -9,7 +9,7 @@
         Title="Planning app" Height="684.241" Width="938.645" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" IsReadOnly="true" MouseDoubleClick="Row_MouseDoubleClick" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="754" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" IsReadOnly="true" MouseDoubleClick="Row_MouseDoubleClick" Margin="10,10,0,0" VerticalAlignment="Top" Height="550" Width="754" RenderTransformOrigin="0.5,0.5">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -24,7 +24,7 @@
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="46,596,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
         <Label x:Name="lblFreedom" Content="" HorizontalAlignment="Left" Margin="181,596,0,0" VerticalAlignment="Top" Width="109"/>
         <Calendar Name="FreedomDate" DisplayDate="02/10/2017" Visibility="Hidden" HorizontalAlignment="Left" Margin="146,366,0,-26" VerticalAlignment="Top"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="773,45,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="804,45,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Controls:MetroWindow>
