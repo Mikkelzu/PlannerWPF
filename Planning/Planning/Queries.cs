@@ -52,7 +52,7 @@ namespace Planning
         /// <returns></returns>
         public static string Edit(int id, string start, string end, string comp, string desc, string status, string prio)
         {
-            return $"UPDATE planning SET StartDate='{start}', EndDate='{end}', Component='{comp}', Description='{desc}', status='{status}', '{prio}' WHERE ID='{id}'";
+            return $"UPDATE planning SET StartDate='{start}', EndDate='{end}', Component='{comp}', Description='{desc}', status='{status}', priority='{prio}' WHERE ID='{id}'";
         }
     }
 }

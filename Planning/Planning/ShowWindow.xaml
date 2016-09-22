@@ -6,10 +6,10 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Planning"
         mc:Ignorable="d"
-        Title="Planning app" Height="421.012" Width="772.674" WindowStartupLocation="CenterScreen"
+        Title="Planning app" Height="684.241" Width="938.645" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" IsReadOnly="true" MouseDoubleClick="Row_MouseDoubleClick" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="617" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" IsReadOnly="true" MouseDoubleClick="Row_MouseDoubleClick" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="754" RenderTransformOrigin="0.5,0.5">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -19,12 +19,12 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-        <Button x:Name="btnEditWindow" Content="Edit" HorizontalAlignment="Left" Margin="363,340,0,0" VerticalAlignment="Top" Width="75" Click="btnEditWindow_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="477,340,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="46,340,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
-        <Label x:Name="lblFreedom" Content="" HorizontalAlignment="Left" Margin="181,340,0,0" VerticalAlignment="Top" Width="109"/>
+        <Button x:Name="btnEditWindow" Content="Edit" HorizontalAlignment="Left" Margin="363,596,0,0" VerticalAlignment="Top" Width="75" Click="btnEditWindow_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="477,596,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="46,596,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
+        <Label x:Name="lblFreedom" Content="" HorizontalAlignment="Left" Margin="181,596,0,0" VerticalAlignment="Top" Width="109"/>
         <Calendar Name="FreedomDate" DisplayDate="02/10/2017" Visibility="Hidden" HorizontalAlignment="Left" Margin="146,366,0,-26" VerticalAlignment="Top"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="645,48,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="773,45,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Controls:MetroWindow>
