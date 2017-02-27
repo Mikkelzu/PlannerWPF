@@ -13,10 +13,11 @@ namespace Planning
         /// <summary>
         /// Connection string. Use this method to connect to database.
         /// </summary>
+        /// /// <param name="databaseName"></param>
         /// <returns></returns>
-        public static string ConnectionString()
+        public static string ConnectionString(string databaseName)
         {
-            return "Data Source=database.s3db;Version=3;datetimeformat=CurrentCulture;";
+            return $"Data Source={databaseName};Version=3;datetimeformat=CurrentCulture;";
         }
 
         /// <summary>
@@ -25,17 +26,22 @@ namespace Planning
         /// <returns></returns>
         public static async Task<DataSet> ShowDataInGrid()
         {
-            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString()))
+            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString("database.s3db")))
             {
                 sql.Open();
                 string command = Queries.Select;
-                SQLiteCommand cmd = new SQLiteCommand(command,sql);
-                await cmd.ExecuteNonQueryAsync();
-                DataSet ds = new DataSet();
-                SQLiteDataAdapter adap = new SQLiteDataAdapter(cmd);
-                adap.Fill(ds);
-                sql.Close();
-                return ds;
+                using (SQLiteCommand cmd = new SQLiteCommand(command, sql))
+                {
+                    await cmd.ExecuteNonQueryAsync();
+                    DataSet ds = new DataSet();
+                    using (SQLiteDataAdapter adap = new SQLiteDataAdapter(cmd))
+                    {
+                        adap.Fill(ds);
+                        sql.Close();
+
+                        return ds;
+                    }
+                }
             }
         }
 
@@ -48,14 +54,17 @@ namespace Planning
         /// <param name="desc"></param>
         public async void AddDataToDataBase(string start, string end, string comp, string desc, string prio)
         {
-            SQLiteConnection sql = new SQLiteConnection(ConnectionString());
+            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString("database.s3db")))
+            {
+                await sql.OpenAsync();
 
-            await sql.OpenAsync();
+                using (SQLiteCommand cmd = new SQLiteCommand(Queries.Insert(start, end, comp, desc, prio), sql))
+                {
+                    await cmd.ExecuteNonQueryAsync();
 
-            SQLiteCommand cmd = new SQLiteCommand(Queries.Insert(start, end, comp, desc, prio), sql);
-
-            await cmd.ExecuteNonQueryAsync();
-            sql.Close();
+                    sql.Close();
+                }  
+            }   
         }
 
         /// <summary>
@@ -67,14 +76,15 @@ namespace Planning
         /// <param name="desc"></param>
         public void Edit(int id, string start, string end, string comp, string desc, string st, string prio)
         {
-            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString()))
+            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString("database.s3db")))
             {
                 sql.Open();
 
-                SQLiteCommand cmd = new SQLiteCommand(Queries.Edit(id, start, end, comp, desc, st, prio), sql);
-
-                cmd.ExecuteNonQuery();
-                sql.Close();
+                using (SQLiteCommand cmd = new SQLiteCommand(Queries.Edit(id, start, end, comp, desc, st, prio), sql))
+                {
+                    cmd.ExecuteNonQuery();
+                    sql.Close();
+                }  
             }
         }
 
@@ -84,13 +94,14 @@ namespace Planning
         /// <param name="id"></param>
         public static void Delete(int id)
         {
-            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString()))
+            using (SQLiteConnection sql = new SQLiteConnection(ConnectionString("database.s3db")))
             {
                 sql.Open();
-                SQLiteCommand cmd = new SQLiteCommand(Queries.Delete(id), sql);
-
-                cmd.ExecuteNonQuery();
-                sql.Close();
+                using (SQLiteCommand cmd = new SQLiteCommand(Queries.Delete(id), sql))
+                {
+                    cmd.ExecuteNonQuery();
+                    sql.Close();
+                }                    
             }
         }
     }

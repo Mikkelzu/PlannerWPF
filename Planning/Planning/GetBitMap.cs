@@ -11,7 +11,12 @@ namespace Planning
     public class GetBitMap
     {
         public static string Path =  Directory.GetCurrentDirectory();
-
+    
+        /// <summary>
+        /// Set an image as priority for a task
+        /// </summary>
+        /// <param name="priorityindex"></param>
+        /// <returns></returns>
         public static BitmapImage getPriority(string priorityindex)
         {
             try
